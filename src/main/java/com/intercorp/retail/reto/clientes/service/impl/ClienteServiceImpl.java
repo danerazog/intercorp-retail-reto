@@ -33,8 +33,9 @@ public class ClienteServiceImpl implements ClienteService {
 		
 		//Se calcula en caso no se haya calculado al insertar
 		return clientes.stream().map(c -> {
-			if(c.getFechaProbableMuerte() != null) 
+			if(c.getFechaProbableMuerte() == null)
 				c.setFechaProbableMuerte(getFechaProbableMuerte(c.getFechaNacimiento()));
+			
 			return c;
 		}).collect(Collectors.toList());
 	}
